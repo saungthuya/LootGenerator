@@ -16,6 +16,13 @@ import java.util.Scanner;
 public class LootGenerator {
 	
 	private static Scanner in;
+	
+	/**
+	 * 
+	 * @param file the file monstats.txt
+	 * @return a list of monsters in List<Monster> format
+	 * @throws FileNotFoundException
+	 */
 	public static List<Monster> getMonsterList(File file) throws FileNotFoundException{
 		Scanner in = new Scanner(file);
 		List<Monster> ret = new ArrayList<Monster>();
@@ -26,6 +33,12 @@ public class LootGenerator {
 		return ret;
 	}
 		
+	/**
+	 * 
+	 * @param file the file monstats.txt
+	 * @return a random monster in Monster form
+	 * @throws FileNotFoundException
+	 */
 	public static Monster pickMonster(File file) throws FileNotFoundException {
 		Scanner in = new Scanner(file);
 		Random rand = new Random();
@@ -42,6 +55,12 @@ public class LootGenerator {
 		return ret;
 	}
 	
+	/**
+	 * 
+	 * @param file the TreasureClassEx.txt file
+	 * @return a list of TreasureClasses in List<TreasureClass> form
+	 * @throws FileNotFoundException
+	 */
 	public static List<TreasureClass> getTreasureClassList(File file) throws FileNotFoundException{
 		Scanner in = new Scanner(file);
 		List<TreasureClass> ret = new ArrayList<TreasureClass>();
@@ -52,6 +71,12 @@ public class LootGenerator {
 		return ret;
 	}
 	
+	/**
+	 * 
+	 * @param file the MagicPrefix.txt file
+	 * @return a prefix in Prefix form
+	 * @throws FileNotFoundException
+	 */
 	public static Prefix getPrefix(File file) throws FileNotFoundException{
 		Scanner in = new Scanner(file);
 		Random rand = new Random();
@@ -67,6 +92,12 @@ public class LootGenerator {
 		return ret;
 	}
 	
+	/**
+	 * 
+	 * @param file the MagicSuffix.txt file
+	 * @return a suffix in Suffix form
+	 * @throws FileNotFoundException
+	 */
 	public static Suffix getSuffix(File file) throws FileNotFoundException{
 		Scanner in = new Scanner(file);
 		Random rand = new Random();
@@ -82,7 +113,12 @@ public class LootGenerator {
 		return ret;
 	}
 	
-	
+	/**
+	 * 
+	 * @param file the armor.txt file
+	 * @return a armor list in List<Armor> format
+	 * @throws FileNotFoundException
+	 */
 	public static List<Armor> getArmorList(File file) throws FileNotFoundException{
 		Scanner in = new Scanner(file);
 		List<Armor> ret = new ArrayList<Armor>();
@@ -93,8 +129,12 @@ public class LootGenerator {
 		return ret;
 	}
 	
-	
-	
+	/**
+	 * gets the Treasure class of an monster
+	 * @param m a monster
+	 * @param treasureList a treasure list
+	 * @return a TreasureClass that matches with the monster
+	 */
 	public static TreasureClass fetchTreasureClass(Monster m, List<TreasureClass> treasureList){
 		String name =  m.getTreasureClass();
 		Iterator<TreasureClass> iter = treasureList.iterator();
@@ -108,7 +148,13 @@ public class LootGenerator {
 		return null;
 	}
 	
-	
+	/**
+	 * 
+	 * @param treasure a treasure 
+	 * @param armorList the armor list
+	 * @param treasureList the treasure list
+	 * @return a armor that is in the treasure class or treasure list
+	 */
 	public static Armor generateBaseItem(TreasureClass treasure, List<Armor> armorList, List<TreasureClass> treasureList){
 		String name = treasure.getRandomItem();
 		Iterator<Armor> iter = armorList.iterator();
@@ -130,11 +176,22 @@ public class LootGenerator {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param baseItem a base armor item 
+	 * @return the string of the defense statistic
+	 */
 	public static String generateBaseStat(Armor baseItem) {
 		String ret = "Defense: " + baseItem.getDefense();
 		return ret;
 	}
 	
+	/**
+	 * 
+	 * @param baseItem a armor item
+	 * @return a string of either just the prefix or suffix classes or both of them
+	 * @throws FileNotFoundException
+	 */
 	public static String generateAffixAndStats(Armor baseItem) throws FileNotFoundException {
 		String ret;
 		Random rand = new Random();
