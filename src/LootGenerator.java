@@ -1,4 +1,10 @@
 /**
+ * The loot generator program lets the user play a game in which the user slays a randomly 
+ * generated monster. When the monster is slain, the program will show the type of armor 
+ * that belongs to a treasure class, the defense level of that armor, statistic of that armor, 
+ * prefix and/or suffix and their statistic of that armor. 
+ * @author Saung Thuya [thuyasau]
+ * @author JongHoon Bae [baejongh]
  *  resources:(to use HashMap) https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html 
  */
 
@@ -19,7 +25,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param file the file monstats.txt
+	 * @param file, the file monstats.txt
 	 * @return a list of monsters in List<Monster> format
 	 * @throws FileNotFoundException
 	 */
@@ -35,7 +41,7 @@ public class LootGenerator {
 		
 	/**
 	 * 
-	 * @param file the file monstats.txt
+	 * @param file, the file monstats.txt
 	 * @return a random monster in Monster form
 	 * @throws FileNotFoundException
 	 */
@@ -57,7 +63,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param file the TreasureClassEx.txt file
+	 * @param file, the TreasureClassEx.txt file
 	 * @return a list of TreasureClasses in List<TreasureClass> form
 	 * @throws FileNotFoundException
 	 */
@@ -73,7 +79,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param file the MagicPrefix.txt file
+	 * @param file, the MagicPrefix.txt file
 	 * @return a prefix in Prefix form
 	 * @throws FileNotFoundException
 	 */
@@ -94,7 +100,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param file the MagicSuffix.txt file
+	 * @param file, the MagicSuffix.txt file
 	 * @return a suffix in Suffix form
 	 * @throws FileNotFoundException
 	 */
@@ -115,7 +121,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param file the armor.txt file
+	 * @param file, the armor.txt file
 	 * @return a armor list in List<Armor> format
 	 * @throws FileNotFoundException
 	 */
@@ -131,8 +137,8 @@ public class LootGenerator {
 	
 	/**
 	 * gets the Treasure class of an monster
-	 * @param m a monster
-	 * @param treasureList a treasure list
+	 * @param m, a monster
+	 * @param treasureList, a list of TreasureClasses
 	 * @return a TreasureClass that matches with the monster
 	 */
 	public static TreasureClass fetchTreasureClass(Monster m, List<TreasureClass> treasureList){
@@ -150,10 +156,10 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param treasure a treasure 
-	 * @param armorList the armor list
-	 * @param treasureList the treasure list
-	 * @return a armor that is in the treasure class or treasure list
+	 * @param treasure, a TreasureClass
+	 * @param armorList, an armor list
+	 * @param treasureList, a list of TreasureClasses
+	 * @return an armor that is in the treasure class or treasure list
 	 */
 	public static Armor generateBaseItem(TreasureClass treasure, List<Armor> armorList, List<TreasureClass> treasureList){
 		String name = treasure.getRandomItem();
@@ -178,7 +184,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param baseItem a base armor item 
+	 * @param baseItem, a base armor item 
 	 * @return the string of the defense statistic
 	 */
 	public static String generateBaseStat(Armor baseItem) {
@@ -188,7 +194,7 @@ public class LootGenerator {
 	
 	/**
 	 * 
-	 * @param baseItem a armor item
+	 * @param baseItem, a base armor item
 	 * @return a string of either just the prefix or suffix classes or both of them
 	 * @throws FileNotFoundException
 	 */
